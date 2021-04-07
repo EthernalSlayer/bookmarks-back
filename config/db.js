@@ -2,19 +2,16 @@ const mongoose = require('mongoose');
 const mongodb = process.env.DB_HOST;
 const dbName = process.env.DB_NAME;
 
-mongoose.connect(`${mongodb}/${dbName}`, {
+const options = {
 	useNewUrlParser: true,
 	useUnifiedTopology: true,
 	useFindAndModify: false,
-});
+};
 
-const db = mongoose.connection;
-db.on('error', console.error.bind(console, 'MongoDB connection error'));
-
-// const testSchema = mongoose.Schema({
-// 	name: String,
-// });
-
-// const Test = mongoose.model('Test', testSchema);
-
-// exports.Test = Test;
+module.exports = async () => {
+	try {
+		await mongoose.connect(`${mongodb}/${dbName}`, options);
+	} catch (err) {
+		console.error(err);
+	}
+};

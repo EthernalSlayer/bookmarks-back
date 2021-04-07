@@ -1,7 +1,7 @@
 const mongoose = require('mongoose');
 const mongoosePaginate = require('mongoose-paginate-v2');
 
-const PictureSchema = mongoose.Schema({
+const PictureSchema = new mongoose.Schema({
 	type: { type: String, required: true },
 	flickr_type: { type: String, required: true },
 	title: { type: String, required: true },

@@ -1,7 +1,7 @@
 const mongoose = require('mongoose');
 const mongoosePaginate = require('mongoose-paginate-v2');
 
-const VideoSchema = mongoose.Schema({
+const VideoSchema = new mongoose.Schema({
 	type: { type: String, required: true },
 	version: { type: String, required: true },
 	provider_name: { type: String, required: true },
